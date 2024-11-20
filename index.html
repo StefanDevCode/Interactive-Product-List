@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Product List</title>
+    <link rel="stylesheet" href="CSS/productList.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="products">
+      <section class="productList">
+        <h1 class="menuTitle">Desserts</h1>
+        <div class="gridProductList">
+          <div class="productItem">
+            <div class="productImageContainer">
+              <img
+                src="Product-images/Waffle with Berries.png"
+                alt="Waffle with berries image"
+                class="productImage"
+              />
+              <button class="addToCartBtn">
+                <img
+                  src="Product-images/carbon_shopping-cart-plus.png"
+                  alt=""
+                  class="cartImage"
+                />
+                Add to Cart
+              </button>
+            </div>
+            <div class="productInfo">
+              <p class="productName">Waffle</p>
+              <p class="nameDescription">Waffle With Berries</p>
+              <p class="productPrice">$6.50</p>
+            </div>
+          </div>
+
+          <div class="productItem">
+            <div class="productImageContainer">
+              <img
+                src="Product-images/Vanilla Bean Crème Brûlée.png"
+                alt="Vanilla Bean Crème Brûlée image"
+                class="productImage"
+              />
+              <button class="addToCartBtn">
+                <img
+                  src="Product-images/carbon_shopping-cart-plus.png"
+                  alt=""
+                  class="cartImage"
+                />
+                Add to Cart
+              </button>
+            </div>
+            <div class="productInfo">
+              <p class="productName">Crème Brûlée</p>
+              <p class="nameDescription">Vanilla Bean Crème Brûlée</p>
+              <p class="productPrice">$7.00</p>
+            </div>
+          </div>
+
+          <div class="productItem">
+            <div class="productImageContainer">
+              <img
+                src="Product-images/Macaron Mix of Five.png"
+                alt="Macaron Mix of Five"
+                class="productImage"
+              />
+              <button class="addToCartBtn">
+                <img
+                  src="Product-images/carbon_shopping-cart-plus.png"
+                  alt=""
+                  class="cartImage"
+                />
+                Add to Cart
+              </button>
+            </div>
+            <div class="productInfo">
+              <p class="productName">Macaron</p>
+              <p class="nameDescription">Macaron Mix of Five</p>
+              <p class="productPrice">$8.00</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cart">
+        <div class=""><h2 class="cartInfo">Your Cart (7)</h2></div>
+        <div class="cartItemContainer">
+          <div class="cartItem">
+            <p class="cartProductName">Classic Tiramisu</p>
+            <p class="cartProductSummary">
+              <span class="cartProductQuantity">1x</span>
+              <span class="cartUnitPrice">&commat; &#36; 5.50</span>
+              <span class="cartProductTotalPrice">&#36; 5.50</span>
+            </p>
+          </div>
+          <div class="closeBtnContainer">
+            <span class="closeBtn"> &times;</span>
+          </div>
+        </div>
+        <!--<hr class="breakLine" />-->
+        <div class="cartItemContainer">
+          <div class="cartItem">
+            <p class="cartProductName">Vanilla Bean Crème Brûlée</p>
+            <p class="cartProductSummary">
+              <span class="cartProductQuantity">1x</span>
+              <span class="cartUnitPrice">&commat; &#36; 5.50</span>
+              <span class="cartProductTotalPrice">&#36; 5.50</span>
+            </p>
+          </div>
+          <div class="closeBtnContainer">
+            <span class="closeBtn"> &times;</span>
+          </div>
+        </div>
+        <!--<hr class="breakLine" />-->
+        <div class="cartItemContainer">
+          <div class="cartItem">
+            <p class="cartProductName">Vanilla Panna Cotta</p>
+            <p class="cartProductSummary">
+              <span class="cartProductQuantity">1x</span>
+              <span class="cartUnitPrice">&commat; &#36; 5.50</span>
+              <span class="cartProductTotalPrice">&#36; 5.50</span>
+            </p>
+          </div>
+          <div class="closeBtnContainer">
+            <span class="closeBtn"> &times;</span>
+          </div>
+        </div>
+        <!--<hr class="breakLine" />-->
+        <div class="cartItemTotalContainer">
+          <p class="textTotalOrder">Order total</p>
+          <p class="totalPrice">&#36; 46.50</p>
+        </div>
+        <div class="deliveryInfo">
+          <div class="containerForTreeImg">
+            <img
+              src="Product-images/Tree.png"
+              alt="Tree sticker carbon-neutral"
+              class="treeImg"
+            />
+          </div>
+          <p>
+            This is a
+            <span class="deliveryTextInfo">carbon-neutral</span>
+            delivery
+          </p>
+        </div>
+        <button class="confirmOrderBtn">Confirm Order</button>
+      </section>
+    </main>
+  </body>
+</html>
