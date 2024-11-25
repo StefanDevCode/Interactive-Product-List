@@ -22,7 +22,7 @@ body {
   height: 1185px;*/
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 50px;
+  column-gap: 32px;
   background: repeating-linear-gradient(
     to right,
     rgb(247, 245, 245),
@@ -231,3 +231,27 @@ body {
 .confirmOrderBtn:active {
   opacity: 0.9;
 }
+
+.flexNewProducts {
+  display: flex;
+  flex-direction: column;
+}
+
+/*.cartItems {
+  display: none;
+}*/
+
+/*.emptyCart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #87635a;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 50px;
+}*/
+
+/*.emptyCartText {
+  margin-top: 30px;
+}*/

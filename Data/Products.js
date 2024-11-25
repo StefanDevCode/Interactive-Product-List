@@ -1,53 +1,62 @@
-const Products = [
+export const products = [
   {
+    id: "waffle1",
     name: "Waffle",
     nameDescription: "Waffle With Berries",
     image: "Product-images/Waffle with Berries.png",
     price: 650,
   },
   {
+    id: "cremebrulee1",
     name: "Crème Brûlée",
     nameDescription: "Vanilla Bean Crème Brûlée",
     image: "Product-images/Vanilla Bean Crème Brûlée.png",
     price: 700,
   },
   {
+    id: "macaron1",
     name: "Macaron",
     nameDescription: "Macaron Mix of Five",
     image: "Product-images/Macaron Mix of Five.png",
     price: 800,
   },
   {
+    id: "tiramisu1",
     name: "Tiramisu",
     nameDescription: "Classic tiramisu",
     image: "Product-images/Classic Tiramisu.png",
     price: 550,
   },
   {
+    id: "baklava1",
     name: "Baklava",
     nameDescription: "Pistachio Baklava",
     image: "Product-images/Pistachio Baklava.png",
     price: 400,
   },
   {
+    id: "pie1",
     name: "Pie",
     nameDescription: "Lemon Meringue Pie",
     image: "Product-images/Lemon Meringue Pie.png",
     price: 500,
   },
   {
+    id: "cake1",
     name: "Cake",
     nameDescription: "Red Velvet Cake",
     image: "Product-images/Red Velvet Cake.png",
     price: 450,
   },
   {
+    id: "brownie1",
     name: "Brownie",
     nameDescription: "Salted Caramel Brownie",
     image: "Product-images/Salted Caramel Brownie.png",
     price: 550,
   },
   {
+    id: "pannacotaa1",
     name: "Panna Cotta",
     nameDescription: "Vanilla Panna Cotta",
     image: "Product-images/Vanilla Panna Cotta.png",
