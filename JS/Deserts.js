@@ -1,12 +1,16 @@
 import { products } from "../Data/Products.js";
 import { cartProducts } from "../Data/cartProducts.js";
 let displayProducts = "";
+let cartSection = document.querySelector(".cart");
 let productListGrid = document.querySelector(".js-gridProductList");
 let cartProductsContainer = document.querySelector(".flexNewProducts");
 let totalCartQuantity = document.querySelector(".cartInfo");
 let totalCartPrice = document.querySelector(".totalPrice");
-/*let existingCart = document.querySelector(".cartItems");
-let emptyCart = document.querySelector(".js-emptyCart");*/
+let existingCart = document.querySelector(".cartItems");
+let emptyCart = document.querySelector(".emptyCart");
+let containerEmptyImage = document.querySelector(".containerForEmptyImage");
+let emptyCartText = document.querySelector(".emptyCartText");
+
 for (let product of products) {
   let generateHtml = `<div class="productItem">
             <div class="productImageContainer">
@@ -79,16 +83,29 @@ function displayCart() {
         </p>
       </div>
       <div class="closeBtnContainer">
-        <span class="closeBtn"> &times;</span>
+        <span class="closeBtn" data-product-id = ${
+          matchingItem.id
+        }> &times;</span>
       </div>
     </div>`;
 
     displayC += generateHtmlCart;
   }
+  if (matchingItem) {
+    cartProductsContainer.innerHTML = displayC;
+    emptyCart.remove();
+    existingCart.classList.add("cartItemsExists");
+  }
 
-  cartProductsContainer.innerHTML = displayC;
   totalCartQuantity.innerHTML = `Your Cart (${calculateQuantity()})`;
   totalCartPrice.innerHTML = `&#36; ${calculateTotal().toFixed(2)}`;
+  let closeButton = document.querySelectorAll(".closeBtn");
+  for (let btn of closeButton) {
+    btn.addEventListener("click", () => {
+      removeFromCart(btn.dataset.productId);
+      displayCart();
+    });
+  }
 }
 
 function calculateQuantity() {
@@ -120,4 +137,18 @@ for (let button of addToCartButtons) {
     addToCart(productId);
     displayCart();
   });
+}
+
+function removeFromCart(productId) {
+  let index = cartProducts.findIndex((item) => item.id === productId);
+  if (index != -1) {
+    cartProducts.splice(index, 1);
+  }
+  if (cartProducts.length === 0) {
+    existingCart.classList.remove("cartItemsExists");
+    /*existingCart.classList.add("cartItems");*/
+    emptyCart.append(containerEmptyImage, emptyCartText);
+    cartSection.append(emptyCart);
+    emptyCart.classList.add("emptyCart");
+  }
 }
