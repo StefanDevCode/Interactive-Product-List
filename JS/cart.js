@@ -1,5 +1,6 @@
 import { products } from "../Data/Products.js";
 import { cartProducts } from "../Data/cartProducts.js";
+import { addToCartBtnStyle, displayProductsOnPage } from "./Deserts.js";
 const cartSection = document.querySelector(".cart");
 const cartProductsContainer = document.querySelector(".flexNewProducts");
 const totalCartQuantity = document.querySelector(".cartInfo");
@@ -25,7 +26,8 @@ export function addToCart(productId) {
   }
 }
 
-export function displayCart() {
+export function displayCart(addButton) {
+  console.log(addButton);
   let displayC = "";
   let matchingItem;
   for (let cartProduct of cartProducts) {
@@ -70,6 +72,23 @@ export function displayCart() {
   for (let btn of closeButton) {
     btn.addEventListener("click", () => {
       removeFromCart(btn.dataset.productId);
+      displayCart(addButton);
+      let allAddToCartClickedBtns = document.querySelectorAll(
+        ".addToCartBtnClicked"
+      );
+      console.dir(allAddToCartClickedBtns);
+      for (let addButtonCliked of allAddToCartClickedBtns) {
+        if (addButtonCliked.dataset.productId === btn.dataset.productId) {
+          addButtonCliked.classList.remove("addToCartBtnClicked");
+          addButtonCliked.classList.add("addToCartBtn");
+          addButtonCliked.innerHTML = `<img
+                        src="Product-images/carbon_shopping-cart-plus.png"
+                        alt=""
+                        class="cartImage"
+                      />
+                      Add to Cart`;
+        }
+      }
       displayCart();
     });
   }
@@ -89,14 +108,13 @@ function calculateTotal() {
   return total;
 }
 
-function removeFromCart(productId) {
+export function removeFromCart(productId, button) {
   let index = cartProducts.findIndex((item) => item.id === productId);
   if (index != -1) {
     cartProducts.splice(index, 1);
   }
   if (cartProducts.length === 0) {
     existingCart.classList.remove("cartItemsExists");
-    /*existingCart.classList.add("cartItems");*/
     emptyCart.append(containerEmptyImage, emptyCartText);
     cartSection.append(emptyCart);
     emptyCart.classList.add("emptyCart");

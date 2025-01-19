@@ -1,10 +1,10 @@
 import { products } from "../Data/Products.js";
 import { cartProducts } from "../Data/cartProducts.js";
-import { addToCart, displayCart } from "./cart.js";
+import { addToCart, displayCart, removeFromCart } from "./cart.js";
 let displayProducts = "";
 const productListGrid = document.querySelector(".js-gridProductList");
 
-function displayProductsOnPage() {
+export function displayProductsOnPage() {
   for (let product of products) {
     let generateHtml = `<div class="productItem">
               <div class="productImageContainer">
@@ -39,9 +39,61 @@ displayProductsOnPage();
 const addToCartButtons = document.querySelectorAll(".addToCartBtn");
 
 for (let button of addToCartButtons) {
-  button.addEventListener("click", () => {
-    let productId = button.dataset.productId;
+  button.addEventListener("click", function () {
+    let productId = this.dataset.productId;
     addToCart(productId);
-    displayCart();
+    displayCart(this);
+    addToCartBtnStyle(this, productId);
+  });
+}
+
+export function addToCartBtnStyle(button, productId) {
+  let matchingItem = cartProducts.find(
+    (cartProduct) => cartProduct.id === productId
+  );
+  button.innerHTML = "";
+  button.classList.add("addToCartBtnClicked");
+  let subtractBtn = document.createElement("div");
+  subtractBtn.innerHTML = "-";
+  subtractBtn.classList.add("appendSubtractBtn");
+  let additionBtn = document.createElement("div");
+  additionBtn.innerHTML = "+";
+  additionBtn.classList.add("appendAdditionBtn");
+  let appendQuantity = document.createElement("p");
+  appendQuantity.innerHTML = matchingItem.quantity;
+  appendQuantity.classList.add("appendQuantity");
+  button.append(subtractBtn, appendQuantity, additionBtn);
+  subtractBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+    console.log(productId);
+    console.log(matchingItem);
+    if (matchingItem) {
+      if (matchingItem.quantity > 1) {
+        matchingItem.quantity--;
+        appendQuantity.innerHTML = matchingItem.quantity;
+        displayCart(button);
+      } else if (matchingItem.quantity === 1) {
+        removeFromCart(productId, button);
+        displayCart(button);
+        button.classList.remove("addToCartBtnClicked");
+        button.classList.add("addToCartBtn");
+        button.innerHTML = `<img
+                    src="Product-images/carbon_shopping-cart-plus.png"
+                    alt=""
+                    class="cartImage"
+                  />
+                  Add to Cart`;
+      }
+    }
+  });
+  additionBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+    console.log(productId);
+    console.log(matchingItem);
+    if (matchingItem) {
+      matchingItem.quantity++;
+      appendQuantity.innerHTML = matchingItem.quantity;
+      displayCart(button);
+    }
   });
 }
